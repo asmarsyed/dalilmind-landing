@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import Image from 'next/image'
 import Link from 'next/link'
-import { Book, Calendar, Clock } from "lucide-react"
+import { Book, FileText, Eye } from "lucide-react"
 
 export default function Home() {
   const [mounted, setMounted] = useState(false)
@@ -20,21 +20,21 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-background relative overflow-hidden">
       {/* Stylish background layers */}
-      <div className="absolute inset-0 stylish-gradient"></div>
-      <div className="absolute inset-0 orange-overlay"></div>
-      <div className="absolute inset-0 noise-texture"></div>
-      <div className="absolute inset-0 grid-pattern"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-[#0e0806] via-[#15100c] to-[#1e1411] z-0"></div>
+      <div className="absolute inset-0 green-overlay opacity-10"></div>
+      <div className="absolute inset-0 noise-texture opacity-25"></div>
+      <div className="absolute inset-0 grid-pattern opacity-15"></div>
       
       {/* Gradient spots */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="gradient-spot-1"></div>
-        <div className="gradient-spot-2"></div>
-        <div className="gradient-spot-3"></div>
+        <div className="absolute top-0 left-0 w-full h-full max-w-[80vw] max-h-[80vh] bg-gradient-to-br from-[#27BA61]/25 via-[#8FC540]/15 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-full h-full max-w-[80vw] max-h-[80vh] bg-gradient-to-tl from-[#27BA61]/20 via-[#8FC540]/10 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute top-1/3 left-1/4 w-full h-full max-w-[40vw] max-h-[40vh] bg-gradient-to-r from-[#8FC540]/20 via-[#27BA61]/10 to-transparent rounded-full blur-3xl"></div>
       </div>
       
       {/* Header */}
       <header className="bg-card/30 backdrop-blur-sm border-b border-[#1a1a1d]/50 relative z-10">
-        <div className="flex items-center justify-between px-4 py-4 max-w-4xl w-full mx-auto">
+        <div className="flex items-center justify-between max-lg:px-4 py-4 max-w-4xl w-full mx-auto">
           <div className="flex items-center gap-2">
             <div className="h-8 w-8 relative">
               <Image 
@@ -45,7 +45,7 @@ export default function Home() {
                 className="object-contain"
               />
             </div>
-            <h1 className="text-xl font-bold">IlmNote</h1>
+            <h1 className="text-xl font-bold">DalilMind</h1>
           </div>
           
         </div>
@@ -56,45 +56,44 @@ export default function Home() {
           {/* Left side - Content */}
           <div className="flex-1 text-left order-1">
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              <span className="text-foreground">Take Notes</span>
+              <span className="text-foreground">Document Your</span>
               <br /> 
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF7F50] to-[#FFC857]">With Purpose</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#27BA61] to-[#8FC540]">Islamic Knowledge</span>
             </h1>
             
             <p className="text-muted-foreground text-lg mb-8 max-w-md">
-              The islamic note taking app built for the Muslim ummah. 
-              Organize your notes, add pages, import verses and hadeeths.
+              Save, organize, and revisit your understanding of Islamic knowledge with their evidences. Build your personal Islamic knowledge reference library.
             </p>
             
             {/* Features list */}
             <div className="space-y-4 mb-8">
               <div className="flex items-start gap-3">
-                <div className="mt-1 h-6 w-6 rounded-full bg-primary/20 flex items-center justify-center">
-                  <Book size={14} className="text-primary" />
+                <div className="mt-1 h-6 w-6 flex items-center justify-center">
+                  <Book size={24} className="text-white" />
                 </div>
                 <div>
-                  <h3 className="font-medium text-foreground">Advanced Organization</h3>
-                  <p className="text-sm text-muted-foreground">Organize your notes into categories, add pages, and structure your Islamic knowledge effectively</p>
+                  <h3 className="font-medium text-foreground">Fiqh Documentation</h3>
+                  <p className="text-sm text-muted-foreground">Record and organize Islamic rulings you follow, with their evidences from Quran and authentic hadith</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-3">
-                <div className="mt-1 h-6 w-6 rounded-full bg-secondary/20 flex items-center justify-center">
-                  <Calendar size={14} className="text-secondary" />
+                <div className="mt-1 h-6 w-6 flex items-center justify-center">
+                  <FileText size={24} className="text-white" />
                 </div>
                 <div>
-                  <h3 className="font-medium text-foreground">Quran and Hadeeth Import</h3>
-                  <p className="text-sm text-muted-foreground">Easily import Quranic verses and hadeeth into your notes to enrich your Islamic studies</p>
+                  <h3 className="font-medium text-foreground">Evidence Management</h3>
+                  <p className="text-sm text-muted-foreground">Easily attach and reference Quranic verses and hadith as evidence for each ruling you document</p>
                 </div>
               </div>
               
               <div className="flex items-start gap-3">
-                <div className="mt-1 h-6 w-6 rounded-full bg-accent/20 flex items-center justify-center">
-                  <Clock size={14} className="text-accent" />
+                <div className="mt-1 h-6 w-6 flex items-center justify-center">
+                  <Eye size={24} className="text-white" />
                 </div>
                 <div>
-                  <h3 className="font-medium text-foreground">Quick Islamic Symbols</h3>
-                  <p className="text-sm text-muted-foreground">Rapidly insert Islamic symbols and special characters into your notes for authentic and elegant presentation</p>
+                  <h3 className="font-medium text-foreground">Quick Reference</h3>
+                  <p className="text-sm text-muted-foreground">Access your documented rulings and their evidences anytime, anywhere, for easy revision and reference</p>
                 </div>
               </div>
             </div>
@@ -167,11 +166,18 @@ export default function Home() {
                     
                     {/* App content */}
                     <div className="flex-1 relative">
+                      {/* Add a harmonious background gradient behind the app screenshot */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#0e0806] via-[#15100c] to-[#211510] z-0">
+                        {/* Add subtle gradient spots */}
+                        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#27BA61]/30 via-[#8FC540]/15 to-transparent blur-xl"></div>
+                        <div className="absolute bottom-0 right-0 w-3/4 h-3/4 bg-gradient-to-tl from-[#27BA61]/20 to-transparent blur-xl"></div>
+                        <div className="absolute top-1/3 right-1/3 w-1/2 h-1/2 bg-gradient-to-tr from-[#8FC540]/15 to-transparent blur-xl"></div>
+                      </div>
                       <Image
                         src="/screen-mockup.png"
-                        alt="IlmNote App Screenshot"
+                        alt="DalilMind App Screenshot"
                         fill
-                        className="object-cover"
+                        className="object-cover relative z-10"
                         priority
                       />
                     </div>
@@ -179,7 +185,7 @@ export default function Home() {
                 </div>
                 
                 {/* Glow effect */}
-                <div className="absolute -inset-8 bg-gradient-to-br from-primary/30 via-secondary/20 to-accent/20 rounded-full blur-3xl opacity-40 -z-10"></div>
+                <div className="absolute -inset-8 bg-gradient-to-br from-[#27BA61]/30 via-[#8FC540]/20 to-[#27BA61]/20 rounded-full blur-3xl opacity-40 -z-10"></div>
               </div>
             </div>
           </div>
@@ -194,7 +200,7 @@ export default function Home() {
               <span className="text-sm text-muted-foreground">
                 © 2025
               </span>
-              <Image 
+          <Image
                 src="/deentech_logo.png" 
                 alt="DeenTech Logo" 
                 width={12} 

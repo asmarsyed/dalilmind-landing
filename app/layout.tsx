@@ -9,8 +9,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "IlmNote - Take Notes With Purpose",
-  description: "The Islamic app built for the Muslim ummah.",
+  title: "DalilMind - Document your Islamic Knowledge",
+  description: "Save, organize, and revisit your Islamic knowledge with their evidences.",
   icons: {
     icon: "/logo.png",
   },
