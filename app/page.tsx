@@ -4,9 +4,11 @@ import { useState, useEffect } from "react"
 import Image from 'next/image'
 import Link from 'next/link'
 import { Book, FileText, Eye } from "lucide-react"
+import { translations, type Language } from './translations'
 
 export default function Home() {
   const [mounted, setMounted] = useState(false)
+  const [language, setLanguage] = useState<Language>('en')
 
   useEffect(() => {
     setMounted(true)
@@ -17,8 +19,10 @@ export default function Home() {
     return null
   }
 
+  const t = translations[language]
+
   return (
-    <div className="min-h-screen flex flex-col bg-background relative overflow-hidden">
+    <div className={'min-h-screen flex flex-col bg-background relative overflow-hidden ' + (language === 'ar' ? 'rtl' : 'ltr')}>
       {/* Stylish background layers */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#0e0806] via-[#15100c] to-[#1e1411] z-0"></div>
       <div className="absolute inset-0 green-overlay opacity-10"></div>
@@ -39,7 +43,7 @@ export default function Home() {
             <div className="h-8 w-8 relative">
               <Image 
                 src="/logo.png"
-                alt="IlmNote Logo"
+                alt="DalilMind Logo"
                 width={32}
                 height={32}
                 className="object-contain"
@@ -48,6 +52,35 @@ export default function Home() {
             <h1 className="text-xl font-bold">DalilMind</h1>
           </div>
           
+          <div className="flex items-center gap-6">
+            <div className="flex gap-2">
+              <button 
+                onClick={() => setLanguage('en')} 
+                className={'px-2 py-1 rounded ' + (language === 'en' ? 'bg-[#27BA61] text-white' : '')}
+              >
+                EN
+              </button>
+              <button 
+                onClick={() => setLanguage('fr')} 
+                className={'px-2 py-1 rounded ' + (language === 'fr' ? 'bg-[#27BA61] text-white' : '')}
+              >
+                FR
+              </button>
+              <button 
+                onClick={() => setLanguage('ar')} 
+                className={'px-2 py-1 rounded ' + (language === 'ar' ? 'bg-[#27BA61] text-white' : '')}
+              >
+                عربي
+              </button>
+            </div>
+            
+            <Link 
+              href="/privacy" 
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {t.privacyPolicy}
+            </Link>
+          </div>
         </div>
       </header>
 
@@ -56,13 +89,13 @@ export default function Home() {
           {/* Left side - Content */}
           <div className="flex-1 text-left order-1">
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              <span className="text-foreground">Document Your</span>
+              <span className="text-foreground">{t.title}</span>
               <br /> 
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#27BA61] to-[#8FC540]">Islamic Knowledge</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#27BA61] to-[#8FC540]">{t.subtitle}</span>
             </h1>
             
             <p className="text-muted-foreground text-lg mb-8 max-w-md">
-              Save, organize, and revisit your understanding of Islamic knowledge with their evidences. Build your personal Islamic knowledge reference library.
+              {t.description}
             </p>
             
             {/* Features list */}
@@ -72,8 +105,8 @@ export default function Home() {
                   <Book size={24} className="text-white" />
                 </div>
                 <div>
-                  <h3 className="font-medium text-foreground">Fiqh Documentation</h3>
-                  <p className="text-sm text-muted-foreground">Record and organize Islamic rulings you follow, with their evidences from Quran and authentic hadith</p>
+                  <h3 className="font-medium text-foreground">{t.features.documentation.title}</h3>
+                  <p className="text-sm text-muted-foreground">{t.features.documentation.description}</p>
                 </div>
               </div>
 
@@ -82,8 +115,8 @@ export default function Home() {
                   <FileText size={24} className="text-white" />
                 </div>
                 <div>
-                  <h3 className="font-medium text-foreground">Evidence Management</h3>
-                  <p className="text-sm text-muted-foreground">Easily attach and reference Quranic verses and hadith as evidence for each ruling you document</p>
+                  <h3 className="font-medium text-foreground">{t.features.evidence.title}</h3>
+                  <p className="text-sm text-muted-foreground">{t.features.evidence.description}</p>
                 </div>
               </div>
               
@@ -92,8 +125,8 @@ export default function Home() {
                   <Eye size={24} className="text-white" />
                 </div>
                 <div>
-                  <h3 className="font-medium text-foreground">Quick Reference</h3>
-                  <p className="text-sm text-muted-foreground">Access your documented rulings and their evidences anytime, anywhere, for easy revision and reference</p>
+                  <h3 className="font-medium text-foreground">{t.features.reference.title}</h3>
+                  <p className="text-sm text-muted-foreground">{t.features.reference.description}</p>
                 </div>
               </div>
             </div>
@@ -111,7 +144,7 @@ export default function Home() {
                   />
                 </div>
                 <div>
-                  <div className="text-[8px] sm:text-[10px] text-muted-foreground">Coming soon on</div>
+                  <div className="text-[8px] sm:text-[10px] text-muted-foreground">{t.comingSoon}</div>
                   <div className="text-xs sm:text-sm font-medium text-foreground">App Store</div>
                 </div>
               </Link>
@@ -127,15 +160,15 @@ export default function Home() {
                   />
                 </div>
                 <div>
-                  <div className="text-[8px] sm:text-[10px] text-muted-foreground">Coming soon on</div>
+                  <div className="text-[8px] sm:text-[10px] text-muted-foreground">{t.comingSoon}</div>
                   <div className="text-xs sm:text-sm font-medium text-foreground">Google Play</div>
                 </div>
               </Link>
             </div>
             
             <div className="text-sm text-muted-foreground text-center sm:text-left w-full">
-              <span>Get updates on X</span>
-              <a href="https://x.com/DeenTechNet" className="ml-2 text-primary hover:underline">@DeenTechNet</a>
+              <span>{t.onStore}</span>
+              <a href="https://x.com/DeenTechNet" className="ml-2 text-primary hover:underline">{t.followUs}</a>
             </div>
           </div>
           
@@ -196,21 +229,21 @@ export default function Home() {
         <div className="max-w-4xl w-full mx-auto px-4">
           <div className="flex flex-col py-3">
             <div className="flex items-center justify-center">
-            <div className="flex items-center">
-              <span className="text-sm text-muted-foreground">
-                © 2025
-              </span>
-          <Image
-                src="/deentech_logo.png" 
-                alt="DeenTech Logo" 
-                width={12} 
-                height={12}
-                className="mx-1"
-              />
-              <span className="text-sm text-muted-foreground">
-                DeenTech. All rights reserved.
-              </span>
-            </div>
+              <div className="flex items-center">
+                <span className="text-sm text-muted-foreground">
+                  © 2025
+                </span>
+                <Image
+                  src="/deentech_logo.png" 
+                  alt="DeenTech Logo" 
+                  width={12} 
+                  height={12}
+                  className="mx-1"
+                />
+                <span className="text-sm text-muted-foreground">
+                  DeenTech. All rights reserved.
+                </span>
+              </div>
             </div>
           </div>
         </div>
