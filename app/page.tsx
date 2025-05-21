@@ -80,6 +80,12 @@ export default function Home() {
             >
               {t.privacyPolicy}
             </Link>
+            <Link 
+              href="/terms" 
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {t.termsOfUse}
+            </Link>
           </div>
         </div>
       </header>

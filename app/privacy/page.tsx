@@ -152,25 +152,30 @@ export default function Privacy() {
             </div>
             <span className="font-bold">DalilMind</span>
           </Link>
-          <div className="flex gap-4">
-            <button 
-              onClick={() => setLanguage('en')} 
-              className={'px-2 py-1 rounded ' + (language === 'en' ? 'bg-[#27BA61] text-white' : '')}
-            >
-              EN
-            </button>
-            <button 
-              onClick={() => setLanguage('fr')} 
-              className={'px-2 py-1 rounded ' + (language === 'fr' ? 'bg-[#27BA61] text-white' : '')}
-            >
-              FR
-            </button>
-            <button 
-              onClick={() => setLanguage('ar')} 
-              className={'px-2 py-1 rounded ' + (language === 'ar' ? 'bg-[#27BA61] text-white' : '')}
-            >
-              عربي
-            </button>
+          <div className="flex items-center gap-4">
+            <Link href="/terms" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              {language === 'en' ? 'Terms of Use' : language === 'fr' ? 'Conditions d\'Utilisation' : 'شروط الاستخدام'}
+            </Link>
+            <div className="flex gap-4">
+              <button 
+                onClick={() => setLanguage('en')} 
+                className={'px-2 py-1 rounded ' + (language === 'en' ? 'bg-[#27BA61] text-white' : '')}
+              >
+                EN
+              </button>
+              <button 
+                onClick={() => setLanguage('fr')} 
+                className={'px-2 py-1 rounded ' + (language === 'fr' ? 'bg-[#27BA61] text-white' : '')}
+              >
+                FR
+              </button>
+              <button 
+                onClick={() => setLanguage('ar')} 
+                className={'px-2 py-1 rounded ' + (language === 'ar' ? 'bg-[#27BA61] text-white' : '')}
+              >
+                عربي
+              </button>
+            </div>
           </div>
         </div>
       </header>

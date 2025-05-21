@@ -20,6 +20,7 @@ type Translation = {
   }
   comingSoon: string
   privacyPolicy: string
+  termsOfUse: string
   onStore: string
   followUs: string
 }
@@ -45,6 +46,7 @@ const translations: Record<Language, Translation> = {
     },
     comingSoon: "Coming soon on",
     privacyPolicy: "Privacy Policy",
+    termsOfUse: "Terms of Use",
     onStore: "Get updates on X",
     followUs: "@DeenTechNet"
   },
@@ -68,6 +70,7 @@ const translations: Record<Language, Translation> = {
     },
     comingSoon: "Bientôt disponible sur",
     privacyPolicy: "Politique de Confidentialité",
+    termsOfUse: "Conditions d'Utilisation",
     onStore: "Suivez-nous sur X",
     followUs: "@DeenTechNet"
   },
@@ -91,6 +94,7 @@ const translations: Record<Language, Translation> = {
     },
     comingSoon: "قريباً على",
     privacyPolicy: "سياسة الخصوصية",
+    termsOfUse: "شروط الاستخدام",
     onStore: "تابعنا على X",
     followUs: "@DeenTechNet"
   }
